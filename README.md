@@ -13,12 +13,13 @@
 ![Made at](https://img.shields.io/badge/institution-UPCH-red)
 
 <!-- ![Hero image placeholder](docs/images/hero_banner.png) -->
+`[IMAGE PLACEHOLDER: hero banner — system worn on arm and chest]`
 
 </div>
 
 ---
 
-## 📖 Overview
+## Overview
 
 **S-REHAB** is a modular, wireless wearable system for the **quantitative monitoring of upper-limb rehabilitation** in patients with **Subacromial Impingement Syndrome (SIS)**. It combines two independent, body-worn acquisition modules — an **arm module** (inertial + surface electromyography) and a **chest module** (electrocardiography) — that stream data over **Bluetooth Low Energy (BLE)** to a host application built in **Unity 3D**, with a companion **web platform** for deferred/remote review by clinicians.
 
@@ -34,7 +35,7 @@ S-REHAB targets:
 
 ---
 
-## 🎯 Motivation
+## Motivation
 
 - Musculoskeletal disorders (MSDs) affect an estimated **1.71 billion people worldwide** (WHO), and Subacromial Impingement Syndrome is one of the most frequent causes of shoulder pain in adults, with an estimated prevalence of **7%–26%** in the general population, particularly among people performing repetitive overhead activities (swimming, volleyball, manual labor).
 - The characteristic "painful arc" (70°–120° of shoulder flexion/abduction) promotes compensatory patterns such as premature scapular elevation caused by upper-trapezius hyperactivation, which lowers therapeutic effectiveness and can favor chronification of the injury.
@@ -44,25 +45,25 @@ S-REHAB targets:
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 | Feature | Description |
 |---|---|
-| 🧩 **Modular wireless architecture** | Two physically independent acquisition modules (arm and chest), each with isolated LiPo power |
-| ⚡ **Edge Computing** | Quaternion-based orientation math and sEMG envelope processing performed locally on the microcontrollers, minimizing wireless payload |
-| 📡 **BLE communication** | End-to-end Bluetooth Low Energy link streaming packed frames to the host at **10 Hz** |
-| 🕹️ **Real-time biofeedback** | Three high-intensity LEDs on the arm module provide immediate color-coded visual guidance (green / yellow / blue) plus an orange idle-state LED |
-| 🧍 **Unity 3D visualization** | Interactive host application driving a virtual anatomical humanoid model in real time |
-| 💪 **sEMG monitoring** | Upper-trapezius muscle activation via MyoWare 2.0, normalized to %MVIC (Maximum Voluntary Isometric Contraction) |
-| 📐 **Shoulder ROM estimation** | Quaternion-based orientation tracking (BNO055 9-DoF IMU) avoiding gimbal lock near 90° flexion |
-| ❤️ **ECG monitoring** | 3-lead electrocardiography via HealthyPi 5 (MAX30001), heart-rate estimation |
-| 🗄️ **Local SQLite logging** | Session data (angle, %MVIC, heart rate, pain events) stored locally by the Unity host |
-| 🌐 **Web dashboard** | Flask + REST/JSON backend for deferred review of session adherence and progress |
-| 🖲️ **Pain-event marker** | Physiotherapist-triggered "pain button" freezes and timestamps angle/%MVIC values in the local database |
+| **Modular wireless architecture** | Two physically independent acquisition modules (arm and chest), each with isolated LiPo power |
+| **Edge Computing** | Quaternion-based orientation math and sEMG envelope processing performed locally on the microcontrollers, minimizing wireless payload |
+| **BLE communication** | End-to-end Bluetooth Low Energy link streaming packed frames to the host at **10 Hz** |
+| **Real-time biofeedback** | Three high-intensity LEDs on the arm module provide immediate color-coded visual guidance (green / yellow / blue) plus an orange idle-state LED |
+| **Unity 3D visualization** | Interactive host application driving a virtual anatomical humanoid model in real time |
+| **sEMG monitoring** | Upper-trapezius muscle activation via MyoWare 2.0, normalized to %MVIC (Maximum Voluntary Isometric Contraction) |
+| **Shoulder ROM estimation** | Quaternion-based orientation tracking (BNO055 9-DoF IMU) avoiding gimbal lock near 90° flexion |
+| **ECG monitoring** | 3-lead electrocardiography via HealthyPi 5 (MAX30001), heart-rate estimation |
+| **Local SQLite logging** | Session data (angle, %MVIC, heart rate, pain events) stored locally by the Unity host |
+| **Web dashboard** | Flask + REST/JSON backend for deferred review of session adherence and progress |
+| **Pain-event marker** | Physiotherapist-triggered "pain button" freezes and timestamps angle/%MVIC values in the local database |
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 S-REHAB is organized into **three functional layers**, chosen to decentralize processing and minimize wireless transfer load:
 
@@ -103,7 +104,7 @@ S-REHAB is organized into **three functional layers**, chosen to decentralize pr
 
 ---
 
-## 🔧 Hardware
+## Hardware
 
 | Component | Purpose | Module |
 |---|---|---|
@@ -123,7 +124,7 @@ S-REHAB is organized into **three functional layers**, chosen to decentralize pr
 
 ---
 
-## 🖥️ Software Stack
+## Software Stack
 
 | Layer | Language / Framework | Engine / Runtime | Key Libraries / Concepts | Database | Communication Protocol |
 |---|---|---|---|---|---|
@@ -135,7 +136,7 @@ S-REHAB is organized into **three functional layers**, chosen to decentralize pr
 
 ---
 
-## 🔬 Signal Processing Pipeline
+## Signal Processing Pipeline
 
 **1. IMU orientation (Arm module):**
 To avoid Gimbal Lock near the 90° flexion boundary (a known limitation of Euler-angle representations), the BNO055's internal processor outputs absolute spatial quaternions directly (`q = w + xi + yj + zk`). At session start, the ESP32 stores a neutral-position offset quaternion (`q_offset`), and on every cycle computes the true relative angle via quaternion multiplication:
@@ -157,10 +158,10 @@ The MyoWare 2.0 outputs an already-rectified and integrated analog envelope (its
 
 | LED Color | Meaning | Condition |
 |---|---|---|
-| 🟢 Green | Expected execution pattern | ROM ≥ 90° **AND** %MVIC < 25% |
-| 🟡 Yellow | Mild deviation | ROM between 70°–90° **OR** %MVIC between 25%–35% |
-| 🔵 Blue | Critical alert / possible compensation | %MVIC > 35% **OR** (ROM < 70° **AND** angular velocity ≈ 0 sustained >1–2 s) **OR** manual pain-button interruption |
-| 🟠 Orange | System idle/rest state (pre-session) | Deactivated automatically at first detected movement |
+| Green | Expected execution pattern | ROM ≥ 90° **AND** %MVIC < 25% |
+| Yellow | Mild deviation | ROM between 70°–90° **OR** %MVIC between 25%–35% |
+| Blue | Critical alert / possible compensation | %MVIC > 35% **OR** (ROM < 70° **AND** angular velocity ≈ 0 sustained >1–2 s) **OR** manual pain-button interruption |
+| Orange | System idle/rest state (pre-session) | Deactivated automatically at first detected movement |
 
 **4. ECG acquisition (Chest module):** 3-lead Ag/AgCl electrode array → MAX30001 analog front-end → digital conditioning with a 50 Hz notch filter, 0.5 Hz high-pass filter, and 40 Hz low-pass filter (configurable via a dedicated web tool) → instantaneous heart-rate estimation.
 
@@ -180,36 +181,7 @@ The MyoWare 2.0 outputs an already-rectified and integrated analog envelope (its
 
 ---
 
-## 📁 Repository Structure
-
-```
-s-rehab/
-├── firmware/
-│   ├── firmware_arm/         # ESP32 firmware: IMU, sEMG, BLE, LED biofeedback (TODO)
-│   └── firmware_chest/       # HealthyPi 5 / RP2040 firmware: ECG acquisition (TODO)
-├── unity/                    # Unity 3D host application (C#)
-│   ├── Assets/
-│   └── ProjectSettings/
-├── web/                      # Flask REST backend + telemonitoring dashboard
-│   ├── app/
-│   └── requirements.txt      # TODO
-├── database/                 # SQLite schema / migration scripts (TODO)
-├── hardware/
-│   ├── cad/                  # Autodesk Fusion 360 enclosure models (TODO: export STEP/STL)
-│   ├── electronics/          # Schematics / protoboard layouts (TODO)
-│   └── pcb/                  # Designed-but-unfabricated PCB files (TODO)
-├── docs/
-│   ├── images/                # Figures referenced in README / paper
-│   └── paper/                 # Source publication (PDF)
-├── LICENSE                   # TODO: select license
-└── README.md
-```
-
-> This structure is a proposed open-source layout inferred from the modules described in the paper. Actual source code organization should be verified against the real repository contents (**TODO**).
-
----
-
-## ⚙️ Installation
+## Installation
 
 > **TODO:** The paper does not specify exact build/flash instructions, dependency versions, or setup scripts. The following is a scaffold to be completed once the source code is published.
 
@@ -222,7 +194,7 @@ cd s-rehab
 # Chest module firmware (RP2040 / HealthyPi 5) — TODO: confirm build system
 
 # Unity host application
-# Open unity/ in Unity Editor (TODO: confirm required Unity version)
+# Open the Unity project in Unity Editor (TODO: confirm required Unity version)
 
 # Web platform (Flask backend)
 cd web
@@ -232,7 +204,7 @@ python app.py                     # TODO: confirm entry point
 
 ---
 
-## ▶️ Usage
+## Usage
 
 Based on the experimental protocol described in the paper, a typical S-REHAB session proceeds as follows:
 
@@ -244,7 +216,7 @@ Based on the experimental protocol described in the paper, a typical S-REHAB ses
 
 ---
 
-## 🧪 Validation
+## Validation
 
 Preliminary validation was performed on **healthy volunteers** (not SIS patients), evaluating four aspects:
 
@@ -259,7 +231,7 @@ Preliminary validation was performed on **healthy volunteers** (not SIS patients
 
 ---
 
-## ⚠️ Current Limitations
+## Current Limitations
 
 Explicitly stated in the paper (Section VI-B, "Alcance MVP"):
 
@@ -275,7 +247,7 @@ Explicitly stated in the paper (Section VI-B, "Alcance MVP"):
 
 ---
 
-## 🗺️ Future Work
+## Future Work
 
 Derived from the paper's Discussion and Conclusions sections:
 
@@ -289,7 +261,7 @@ Derived from the paper's Discussion and Conclusions sections:
 
 ---
 
-## 🔬 Research Contributions
+## Research Contributions
 
 - A **three-layer (Edge / Host / Cloud) distributed architecture** for wireless, low-cost biomedical monitoring, validated as a feasible approach for portable biomedical systems by reducing wireless payload and host computational load.
 - Application of **quaternion-based orientation estimation** to avoid Gimbal Lock in shoulder ROM tracking near the clinically relevant 90° flexion boundary.
@@ -299,7 +271,7 @@ Derived from the paper's Discussion and Conclusions sections:
 
 ---
 
-## 📄 Publication
+## Publication
 
 **S-REHAB: Sistema wearable inalámbrico para el registro sEMG y análisis cinemático orientado a monitoreo simultáneo de variables fisiocinemáticas en la rehabilitación del miembro superior**
 
@@ -318,7 +290,7 @@ Universidad Peruana Cayetano Heredia (UPCH), Lima, Perú
 
 ---
 
-## 📜 License
+## License
 
 **TODO — no license specified in the paper.**
 
@@ -326,7 +298,7 @@ For a research-driven biomedical wearable project intended for open collaboratio
 
 ---
 
-## 👥 Authors
+## Authors
 
 | Name | Affiliation | Contact |
 |---|---|---|
@@ -339,7 +311,7 @@ For a research-driven biomedical wearable project intended for open collaboratio
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 This project was developed at **Universidad Peruana Cayetano Heredia (UPCH)**, Lima, Perú, as part of ongoing biomedical engineering research into low-cost, wireless monitoring solutions for musculoskeletal rehabilitation. The authors acknowledge the volunteers who participated in the preliminary validation sessions, and the open clinical and engineering literature (SENIAM guidelines, Ludewig & Cook compensatory-pattern criteria, IEC 60601-1 principles) that informed the system's design.
 
