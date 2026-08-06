@@ -13,7 +13,6 @@
 ![Made at](https://img.shields.io/badge/institution-UPCH-red)
 
 <!-- ![Hero image placeholder](docs/images/hero_banner.png) -->
-`[IMAGE PLACEHOLDER: hero banner — system worn on arm and chest]`
 
 </div>
 
