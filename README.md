@@ -246,20 +246,6 @@ Explicitly stated in the paper (Section VI-B, "Alcance MVP"):
 
 ---
 
-## Future Work
-
-Derived from the paper's Discussion and Conclusions sections:
-
-- [ ] Fabricate custom **PCBs** to reduce device size and improve robustness.
-- [ ] Integrate the **MyoWare 2.0 Link Shield** into the arm module to eliminate external wiring.
-- [ ] Add **additional sEMG channels** to monitor further muscles (serratus anterior, lower trapezius, anterior deltoid) for a more complete characterization of muscular activation during shoulder rehabilitation.
-- [ ] Conduct a **multicenter clinical validation** with diagnosed SIS patients.
-- [ ] Benchmark system performance against clinical/research reference instruments: **Vicon** motion capture systems, digital goniometers, and commercial surface EMG systems such as **Delsys**.
-- [ ] Complete full **IEC 60601-1** electrical safety compliance testing.
-- [ ] Complete simultaneous dual-module BLE integration, dynamic in-session %MVIC computation, and fully automated physiological-variable synchronization to SQLite.
-
----
-
 ## Research Contributions
 
 - A **three-layer (Edge / Host / Cloud) distributed architecture** for wireless, low-cost biomedical monitoring, validated as a feasible approach for portable biomedical systems by reducing wireless payload and host computational load.
@@ -267,25 +253,6 @@ Derived from the paper's Discussion and Conclusions sections:
 - A **peak-envelope-based %MVIC normalization method** for the MyoWare 2.0's pre-rectified analog output, avoiding the need for raw-signal RMS computation.
 - Integration of **localized LED biofeedback** driven by literature-derived clinical rules (Ludewig & Cook compensatory-pattern criteria) to reduce cognitive load during self-monitored exercise execution.
 - A combined **kinematic + neuromuscular + cardiovascular** monitoring approach in a single wearable platform, with automatic derivation of five summary clinical metrics (max ROM, repetitions, Efficiency Ratio, ΔHR, sEMG-MDF fatigue).
-
----
-
-## Publication
-
-**S-REHAB: Sistema wearable inalámbrico para el registro sEMG y análisis cinemático orientado a monitoreo simultáneo de variables fisiocinemáticas en la rehabilitación del miembro superior**
-
-Daniel Cárdenas, André Alexis Palomino Mozo, Luis Luque, André Vallejo Canchanya, Anthony Callupe, Mishelle Llanos
-Universidad Peruana Cayetano Heredia (UPCH), Lima, Perú
-
-```bibtex
-@inproceedings{srehab2026,
-  title     = {S-REHAB: Sistema wearable inalámbrico para el registro sEMG y análisis cinemático orientado a monitoreo simultáneo de variables fisiocinemáticas en la rehabilitación del miembro superior},
-  author    = {Cárdenas, Daniel and Palomino Mozo, André Alexis and Luque, Luis and Vallejo Canchanya, André and Callupe, Anthony and Llanos, Mishelle},
-  institution = {Universidad Peruana Cayetano Heredia (UPCH)},
-  year      = {2026},
-  note      = {TODO: complete venue, volume, pages, and DOI once published}
-}
-```
 
 ---
 
