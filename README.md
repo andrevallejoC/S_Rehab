@@ -180,29 +180,6 @@ The MyoWare 2.0 outputs an already-rectified and integrated analog envelope (its
 
 ---
 
-## Installation
-
-> **TODO:** The paper does not specify exact build/flash instructions, dependency versions, or setup scripts. The following is a scaffold to be completed once the source code is published.
-
-```bash
-# Clone the repository
-git clone https://github.com/<org>/s-rehab.git
-cd s-rehab
-
-# Arm module firmware (ESP32) — TODO: confirm toolchain (Arduino IDE / PlatformIO / ESP-IDF)
-# Chest module firmware (RP2040 / HealthyPi 5) — TODO: confirm build system
-
-# Unity host application
-# Open the Unity project in Unity Editor (TODO: confirm required Unity version)
-
-# Web platform (Flask backend)
-cd web
-pip install -r requirements.txt   # TODO: confirm dependencies
-python app.py                     # TODO: confirm entry point
-```
-
----
-
 ## Usage
 
 Based on the experimental protocol described in the paper, a typical S-REHAB session proceeds as follows:
