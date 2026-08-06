@@ -285,8 +285,6 @@ This project was developed at **Universidad Peruana Cayetano Heredia (UPCH)**, L
 
 <div align="center">
 
-`[IMAGE PLACEHOLDER: system overview GIF — arm + chest modules in use]`
-
 **S-REHAB** — an Edge-Computing wearable platform for objective, quantitative shoulder rehabilitation monitoring.
 
 </div>
